@@ -1,0 +1,43 @@
+version: '3.7' 
+
+services: 
+  # noVNC service, providing a web interface 
+  novnc: 
+    image: theasp/novnc:latest 
+    container_name: novnc 
+    environment: 
+      - DISPLAY_WIDTH=1024 
+      - DISPLAY_HEIGHT=768 
+      - RUN_XTERM=no 
+    ports: 
+      - "8080:8080"  # Map port 8080 
+    networks: 
+      - ros 
+    restart: always 
+ 
+  # roscore service, starting the ROS master node 
+  roscore: 
+    image: osrf/ros:noetic-desktop-full 
+    container_name: roscore 
+    command: roscore 
+    networks: 
+      - ros 
+    restart: always 
+ 
+  # GUI application container, running ROS applications like rviz 
+  ros_gui: 
+    image: osrf/ros:noetic-desktop-full 
+    container_name: ros_gui 
+    command: bash 
+    environment: 
+      - ROS_MASTER_URI=http://roscore:11311 
+      - DISPLAY=novnc:0.0  # Direct display output to noVNC container 
+    networks: 
+      - ros 
+    restart: always 
+    stdin_open: true 
+    tty: true 
+ 
+networks: 
+  ros: 
+    driver: bridge
