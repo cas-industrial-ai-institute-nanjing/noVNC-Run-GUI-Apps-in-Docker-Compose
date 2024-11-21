@@ -15,9 +15,10 @@ services:
  
   # GUI application container, running ROS applications like rviz 
   ros_gui: 
-    image: osrf/ros:jazzy-desktop-full 
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: ros_gui 
-    command: bash 
     environment: 
       - DISPLAY=novnc:0.0  # Direct display output to noVNC container 
     networks: 
@@ -25,6 +26,17 @@ services:
     restart: always 
     stdin_open: true 
     tty: true 
+  
+  ros_publisher: 
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ros_publisher 
+    networks: 
+      - ros 
+    restart: always 
+    stdin_open: true 
+    tty: true
  
 networks: 
   ros: 

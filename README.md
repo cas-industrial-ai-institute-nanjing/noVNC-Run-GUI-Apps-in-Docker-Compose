@@ -38,19 +38,17 @@ These components communicate over a shared Docker network called `ros`, and the 
     docker-compose up
     ```
 
-2. Access the running Docker container:
+2. Access the running Docker container "ros_gui":
     ```bash
     docker exec -it ros_gui bash
-    ```
-
-3. Source the ROS entry point script:
-    ```bash
-    source ./ros_entrypoint.sh
-    ```
-
-4. Launch RViz (or any other GUI application you need):
-    ```bash
     ros2 run rviz2 rviz2
+    ros2 run turtlesim turtlesim_node
+    ```
+
+2. Access the running Docker container "ros_publisher":
+    ```bash
+    docker exec -it ros_gui bash
+    ros2 run turtlesim turtle_teleop_key
     ```
 
 
