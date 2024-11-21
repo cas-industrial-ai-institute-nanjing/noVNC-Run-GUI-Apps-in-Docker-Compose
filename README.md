@@ -50,7 +50,7 @@ These components communicate over a shared Docker network called `ros`, and the 
 
 4. Launch RViz (or any other GUI application you need):
     ```bash
-    rosrun rviz rviz
+    ros2 run rviz2 rviz2
     ```
 
 
