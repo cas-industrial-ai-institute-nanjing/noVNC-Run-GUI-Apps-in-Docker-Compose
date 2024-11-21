@@ -4,7 +4,7 @@ Wants to read this in other languages? [简体中文](asset/README-zh_cn.md)
 
 ## Required Docker Images:
 1. `theasp/novnc:latest`
-2. `osrf/ros:noetic-desktop-full`
+2. `osrf/ros:jazzy-desktop-full`
 
 
 ## Introduction

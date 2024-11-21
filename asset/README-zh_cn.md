@@ -12,7 +12,7 @@
 
 ### 所需 Docker 镜像：
 1. `theasp/novnc:latest`
-2. `osrf/ros:noetic-desktop-full`
+2. `osrf/ros:jazzy-desktop-full`
 
 ---
 

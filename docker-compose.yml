@@ -13,22 +13,12 @@ services:
       - ros 
     restart: always 
  
-  # roscore service, starting the ROS master node 
-  roscore: 
-    image: osrf/ros:noetic-desktop-full 
-    container_name: roscore 
-    command: roscore 
-    networks: 
-      - ros 
-    restart: always 
- 
   # GUI application container, running ROS applications like rviz 
   ros_gui: 
-    image: osrf/ros:noetic-desktop-full 
+    image: osrf/ros:jazzy-desktop-full 
     container_name: ros_gui 
     command: bash 
     environment: 
-      - ROS_MASTER_URI=http://roscore:11311 
       - DISPLAY=novnc:0.0  # Direct display output to noVNC container 
     networks: 
       - ros 
